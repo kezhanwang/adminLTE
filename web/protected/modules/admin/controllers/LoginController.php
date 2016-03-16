@@ -14,4 +14,8 @@ class LoginController extends HwAdminController
         $this->layout = 'login';
         $this->render(self::VIEW_PATH);
     }
+
+    public function actionLogin(){
+        echo 1;
+    }
 }

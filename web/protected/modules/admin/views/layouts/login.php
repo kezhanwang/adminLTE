@@ -25,6 +25,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body class="hold-transition login-page">
 <?php echo $content; ?>
@@ -39,10 +40,25 @@
 <script src="/adminLTE/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
+        $('#sign').click(function () {
+            var _email = $('#email').val();
+            var _password = $('#password').val();
+            if (_email == '') {
+                $('.checkbox label').html('请填写邮箱！');
+                return false;
+            }else if (_password == ''){
+                $('.checkbox label').html('请填写密码！');
+                return false;
+            }else  if (_password.length < 6 || _password > 20){
+                $('.checkbox label').html('密码长度错误！');
+                return false;
+            }
+            $('.checkbox label').html('');
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
         });
     });
 </script>
