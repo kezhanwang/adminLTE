@@ -49,7 +49,7 @@
             }else if (_password == ''){
                 $('.checkbox label').html('请填写密码！');
                 return false;
-            }else  if (_password.length < 6 || _password > 20){
+            }else  if (_password.length < 6 || _password.length > 20){
                 $('.checkbox label').html('密码长度错误！');
                 return false;
             }

@@ -9,13 +9,31 @@
 class LoginController extends HwAdminController
 {
     const VIEW_PATH = 'index';
+
     public function actionIndex()
     {
         $this->layout = 'login';
         $this->render(self::VIEW_PATH);
     }
 
-    public function actionLogin(){
-        echo 1;
+    public function actionLogin()
+    {
+        $request = Yii::app()->getRequest();
+        if ($request->isPostRequest) {
+            $email = trim(addcslashes(Yii::app()->request->getParam('email', '')));
+            $password = trim(addcslashes(Yii::app()->request->getParam('password', '')));
+            if ($email == '' || !preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $email)) {
+                //todo
+            }
+
+            if ($password == '') {
+
+            }
+            try{
+                $loginResult = AdminLogin::adminLogin($email, $password);
+            }catch(Exception $e){
+
+            }
+        }
     }
 }
