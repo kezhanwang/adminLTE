@@ -8,5 +8,5 @@
  */
 class HwAdminController extends HwController
 {
-
+    public $layout = 'common';
 }
