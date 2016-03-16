@@ -10,7 +10,6 @@ class IndexController extends HwAdminController
 {
     public function actionIndex()
     {
-
         $this->render('index');
     }
 }
