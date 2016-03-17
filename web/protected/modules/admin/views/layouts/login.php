@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/adminLTE/dist/css/AdminLTE.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="/adminLTE/plugins/iCheck/square/blue.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/adminLTE/dist/css/skins/_all-skins.min.css">
@@ -36,28 +34,27 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <!-- Bootstrap 3.3.5 -->
 <script src="/adminLTE/bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="/adminLTE/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
         $('#sign').click(function () {
-            var _email = $('#email').val();
+            var _username = $('#username').val();
             var _password = $('#password').val();
-            if (_email == '') {
-                $('.checkbox label').html('请填写邮箱！');
+            if (_username == '' || _username.length < 6 || _username > 20) {
+                $('.checkbox label').html('请正确填写邮箱！');
                 return false;
-            }else if (_password == ''){
-                $('.checkbox label').html('请填写密码！');
-                return false;
-            }else  if (_password.length < 6 || _password.length > 20){
-                $('.checkbox label').html('密码长度错误！');
+            } else if (_password == '' || _password.length < 6 || _password.length > 20) {
+                $('.checkbox label').html('请正确填写密码！');
                 return false;
             }
             $('.checkbox label').html('');
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
+            $.ajax({
+                type: "POST",
+                url: '/admin/login/login',
+                data: {'username': _username, 'password': _password},
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                }
             });
         });
     });
