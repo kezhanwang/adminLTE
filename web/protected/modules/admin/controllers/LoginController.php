@@ -28,11 +28,16 @@ class LoginController extends HwAdminController
                 HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
             }
             try {
-                AdminLogin::adminLogin($username, $password);
+//                AdminLogin::adminLogin($username, $password);
                 HwOutput::successOutput(LoginSuccess, $this->successLoginMsg, array('url' => '/admin/index'));
             } catch (Exception $e) {
                 HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
             }
         }
+    }
+
+    public function actionLogout()
+    {
+
     }
 }

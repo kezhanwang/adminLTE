@@ -53,7 +53,10 @@
                 data: {'username': _username, 'password': _password},
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
+                    $('.checkbox label').html(data.msg);
+                    if (data.status){
+                        window.location.href = data.data['url'];
+                    }
                 }
             });
         });

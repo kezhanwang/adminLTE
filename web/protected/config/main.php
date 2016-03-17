@@ -5,6 +5,7 @@
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+require 'constant.php';
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Howiesoft',
@@ -85,3 +86,5 @@ return array(
         'adminEmail' => 'webmaster@example.com',
     ),
 );
+
+
