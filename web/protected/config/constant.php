@@ -11,3 +11,6 @@
  */
 define('LoginSuccess', 100000);
 define('LoginError', 100001);
+
+
+define('HOME_LAY_OUT', '');
