@@ -1,59 +1,140 @@
-<?php /* @var $this Controller */ ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="language" content="en">
+	<title>Home</title>
+	<!---css--->
+	<link href="static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="static/css/style.css" rel='stylesheet' type='text/css' />
+	<!---css--->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Real Space Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!---js--->
+	<script src="static/js/jquery-1.11.1.min.js"></script>
+	<script src="static/js/bootstrap.js"></script>
+	<!---js--->
+	<!---fonts-->
+	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.useso.com/css?family=Righteous' rel='stylesheet' type='text/css'>
+	<!---fonts-->
+	<script src="static/js/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider").responsiveSlides({
+				auto:true,
+				nav: false,
+				speed: 500,
+				namespace: "callbacks",
+				pager:true,
+			});
+		});
+	</script>
+	<link href="static/css/owl.carousel.css" rel="stylesheet">
+	<script src="static/js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#owl-demo").owlCarousel({
+				items : 1,
+				lazyLoad : true,
+				autoPlay : true,
+				navigation : false,
+				navigationText :  false,
+				pagination : true,
+			});
+		});
+	</script>
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
+<?php echo $this->renderPartial('/layouts/header');?>
 
-<div class="container" id="page">
+<?php echo $content;?>
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+<!---footer--->
+<!--copy-->
+<div class="copy-section">
+	<div class="container">
+		<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">
+				&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+	</div>
+</div>
+<!--copy-->
+<!-- login -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content modal-info">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body real-spa">
+				<div class="login-grids">
+					<div class="login">
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+						<div class="login-right">
+							<form>
+								<h3>Login</h3>
+								<input type="text" value="Enter your Email" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Enter your Email';}" required="">
+								<input type="password" value="Password" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Password';}" required="">
+								<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
 
-	<?php echo $content; ?>
+								<div class="single-bottom">
+									<input type="checkbox" id="brand" value="">
+									<label for="brand"><span></span>Remember Me.</label>
+								</div>
+								<input type="submit" value="Login Now">
+							</form>
+						</div>
 
-	<div class="clear"></div>
+					</div>
+					<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a
+								href="#">Privacy Policy</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //login -->
+<!-- Register -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content modal-info">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body real-spa">
+				<div class="login-grids">
+					<div class="login">
+						<div class="login-right">
+							<form>
+								<h3>Register </h3>
+								<input type="text" value="Name" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Name';}" required="">
+								<input type="text" value="Mobile number" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
+								<input type="text" value="Email id" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Email id';}" required="">
+								<input type="password" value="Password" onfocus="this.value = '';"
+									   onblur="if (this.value == '') {this.value = 'Password';}" required="">
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
-
+								<input type="submit" value="Register Now">
+							</form>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a
+								href="#">Privacy Policy</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //Register -->
 </body>
 </html>
