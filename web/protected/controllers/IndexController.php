@@ -13,4 +13,9 @@ class IndexController extends HomeController
         $this->render('index');
     }
 
+    public function actiontest()
+    {
+
+    }
+
 }
