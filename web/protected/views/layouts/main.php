@@ -16,9 +16,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="static/js/bootstrap.js"></script>
 	<!---js--->
 	<!---fonts-->
-	<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=PT+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.useso.com/css?family=Righteous' rel='stylesheet' type='text/css'>
 	<!---fonts-->
 	<script src="static/js/responsiveslides.min.js"></script>
 	<script>
@@ -57,84 +54,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--copy-->
 <div class="copy-section">
 	<div class="container">
-		<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">
-				&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+		<p>Copyright &copy; 2016. Howiesoft-豪伊科技. All rights reserved.京ICP备15053614号</p>
 	</div>
 </div>
 <!--copy-->
-<!-- login -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content modal-info">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-			</div>
-			<div class="modal-body real-spa">
-				<div class="login-grids">
-					<div class="login">
-
-						<div class="login-right">
-							<form>
-								<h3>Login</h3>
-								<input type="text" value="Enter your Email" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Enter your Email';}" required="">
-								<input type="password" value="Password" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Password';}" required="">
-								<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
-
-								<div class="single-bottom">
-									<input type="checkbox" id="brand" value="">
-									<label for="brand"><span></span>Remember Me.</label>
-								</div>
-								<input type="submit" value="Login Now">
-							</form>
-						</div>
-
-					</div>
-					<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a
-								href="#">Privacy Policy</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- //login -->
-<!-- Register -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content modal-info">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">&times;</span></button>
-			</div>
-			<div class="modal-body real-spa">
-				<div class="login-grids">
-					<div class="login">
-						<div class="login-right">
-							<form>
-								<h3>Register </h3>
-								<input type="text" value="Name" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Name';}" required="">
-								<input type="text" value="Mobile number" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Mobile number';}" required="">
-								<input type="text" value="Email id" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Email id';}" required="">
-								<input type="password" value="Password" onfocus="this.value = '';"
-									   onblur="if (this.value == '') {this.value = 'Password';}" required="">
-
-								<input type="submit" value="Register Now">
-							</form>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<p>By logging in you agree to our <a href="#">Terms</a> and <a href="#">Conditions</a> and <a
-								href="#">Privacy Policy</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- //Register -->
 </body>
 </html>

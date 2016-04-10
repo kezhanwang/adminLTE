@@ -118,6 +118,7 @@ body{
     margin-bottom: 0;
     border: none !important;
 	background: #333d47;
+    padding-top: 1em;
 }
 .navbar-nav {
     float: left;

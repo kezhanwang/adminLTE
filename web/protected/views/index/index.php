@@ -1,4 +1,3 @@
-
 <!---banner--->
 <div class="slider">
     <div class="callbacks_container">
