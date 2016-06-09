@@ -6,7 +6,7 @@
  * Date: 16/6/9
  * Time: 下午5:50
  */
-class ARUser extends CActiveRecord
+class ARAdminUser extends CActiveRecord
 {
 
     const TABLE_NAME = 'hw_admin_user';

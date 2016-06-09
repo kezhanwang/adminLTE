@@ -20,4 +20,27 @@ class HwAdminController extends CController
         if (empty($this->userinfo))
             header('Location:\admin\login');
     }
+
+    public function getMenu()
+    {
+        $menuList = ARAdminMenu::getMenu();
+        $menu = array();
+        foreach ($menuList as $key => $value) {
+            if ($value['parent_id'] == 0) {
+                $menu[$value['id']] = $value;
+                $menu[$value['id']]['url'] = "/admin/{$value['controller']}/{$value['function']}";
+                $menu[$value['id']]['children'] = array();
+            }
+        }
+
+        foreach ($menuList as $key => $value) {
+            if (isset($menu[$value['parent_id']])){
+                $menu[$value['parent_id']]['children'][$value['id']] = $value;
+                $menu[$value['parent_id']]['children'][$value['id']]['url'] = "/admin/{$value['controller']}/{$value['function']}";
+            }
+        }
+        return $menu;
+    }
+
+
 }

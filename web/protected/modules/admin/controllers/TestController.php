@@ -18,10 +18,16 @@ class TestController extends HwAdminController
         );
         var_dump($data);
 
-        $result = ARUser::add($data);
+        $result = ARAdminUser::add($data);
 
         var_dump($result);
 
     }
 
+    public function actionmenu(){
+        $a = Yii::app()->controller->id;
+        var_dump($a);
+        $b = Yii::app()->controller->getAction()->getId();
+        var_dump($b);
+    }
 }
