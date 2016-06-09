@@ -12,6 +12,8 @@ class HwAdminController extends CController
 
     public $userinfo = array();
 
+    public $website = array();
+
     public function __construct($id, $module)
     {
         parent::__construct($id, $module);
@@ -19,6 +21,8 @@ class HwAdminController extends CController
         $this->userinfo = Yii::app()->session['AdminUserInfo'];
         if (empty($this->userinfo))
             header('Location:\admin\login');
+
+        $this->getWebSite();
     }
 
     public function getMenu()
@@ -40,6 +44,14 @@ class HwAdminController extends CController
             }
         }
         return $menu;
+    }
+
+    public function getWebSite(){
+        $website = ARWebsite::getWebSite();
+
+        foreach ($website as $key=>$value){
+            $this->website[$value['define_key']] = $value['value'];
+        }
     }
 
 

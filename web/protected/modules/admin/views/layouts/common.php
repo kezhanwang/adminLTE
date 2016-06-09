@@ -11,10 +11,8 @@ $function = Yii::app()->controller->getAction()->getId();
     <header class="main-header">
         <!-- Logo -->
         <a href="/" class="logo">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><?php echo $this->website['web_name'];?></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -70,11 +68,5 @@ $function = Yii::app()->controller->getAction()->getId();
     <div class="content-wrapper">
         <?php echo $content;?>
     </div><!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.0
-        </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
-    </footer>
+
 <?php echo $this->renderPartial('/layouts/footer'); ?>
