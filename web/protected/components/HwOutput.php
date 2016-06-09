@@ -9,7 +9,7 @@
 class HwOutput
 {
 
-    public static function errorOutput($code, $msg, $data)
+    public static function errorOutput($code, $msg, $data=array())
     {
         $returnData = array(
             'code' => $code,
@@ -22,7 +22,7 @@ class HwOutput
         exit();
     }
 
-    public static function successOutput($code, $msg, $data){
+    public static function successOutput($code, $msg, $data=array()){
         $returnData = array(
             'code' => $code,
             'status' => TRUE,
