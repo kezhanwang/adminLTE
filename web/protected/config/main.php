@@ -58,11 +58,12 @@ return array(
 
         // database settings are configured in database.php
         'db' => require(dirname(__FILE__) . '/database.php'),
+        'db_r' => require(dirname(__FILE__) . '/database_r.php'),
 
-        'errorHandler' => array(
-            // use 'site/error' action to display errors
-            'errorAction' => 'site/error',
-        ),
+//        'errorHandler' => array(
+//            // use 'site/error' action to display errors
+//            'errorAction' => 'site/error',
+//        ),
 
         'log' => array(
             'class' => 'CLogRouter',

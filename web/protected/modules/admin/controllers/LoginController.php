@@ -6,11 +6,22 @@
  * Date: 2016/3/16
  * Time: 19:19
  */
-class LoginController extends HwAdminController
+class LoginController extends CController
 {
     private $errorLoginMsg = '登录失败，请检查用户名密码';
     private $successLoginMsg = '登录成功，页面跳转中';
     const VIEW_PATH = 'index';
+
+    public function __construct($id, $module)
+    {
+        parent::__construct($id, $module);
+
+        $session = Yii::app()->session['AdminUserInfo'];
+
+        if (!empty($session))
+            header('Location:/admin/index');
+
+    }
 
     public function actionIndex()
     {
@@ -24,11 +35,19 @@ class LoginController extends HwAdminController
         if ($request->isPostRequest && $request->isAjaxRequest) {
             $username = trim(Yii::app()->request->getParam('username', ''));
             $password = trim(Yii::app()->request->getParam('password', ''));
-            if ($username == '' || strlen($username) < 6 || strlen($username) > 20 || $password == '' || strlen($password) < 6 || strlen($password) > 20) {
+
+            $user = new UserController($username, $password);
+
+            try {
+                $user->checkUsername();
+                $user->checkPassword();
+            } catch (Exception $e) {
                 HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
             }
+
             try {
-//                AdminLogin::adminLogin($username, $password);
+                $userInfo = $user->getUserInfo();
+                Yii::app()->session['AdminUserInfo'] = $userInfo;
                 HwOutput::successOutput(LoginSuccess, $this->successLoginMsg, array('url' => '/admin/index'));
             } catch (Exception $e) {
                 HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
@@ -38,6 +57,9 @@ class LoginController extends HwAdminController
 
     public function actionLogout()
     {
-
+        Yii::app()->session->clear();
+        Yii::app()->session->destroy();
+        header('Location:/admin/login');
     }
+    
 }
