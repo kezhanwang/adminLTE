@@ -62,13 +62,13 @@ class UserController
 
         switch ($this->type) {
             case self::TYPE_USER_NAME:
-                $this->userInfo = ARUser::getUserInfoByUsernameAndPassword($this->username, $this->password);
+                $this->userInfo = ARAdminUser::getUserInfoByUsernameAndPassword($this->username, $this->password);
                 break;
             case self::TYPE_USER_PHONE:
-                $this->userInfo = ARUser::getUserInfoByPhoneAndPassword($this->username, $this->password);
+                $this->userInfo = ARAdminUser::getUserInfoByPhoneAndPassword($this->username, $this->password);
                 break;
             default:
-                $this->userInfo = ARUser::getUserInfoByUsernameAndPassword($this->username, $this->password);
+                $this->userInfo = ARAdminUser::getUserInfoByUsernameAndPassword($this->username, $this->password);
                 break;
         }
 
