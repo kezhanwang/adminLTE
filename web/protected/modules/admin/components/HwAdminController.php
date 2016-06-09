@@ -10,13 +10,14 @@ class HwAdminController extends CController
 {
     public $layout = 'common';
 
+    public $userinfo = array();
+
     public function __construct($id, $module)
     {
         parent::__construct($id, $module);
 
-        $userInfo = Yii::app()->session['AdminUserInfo'];
-        if (empty($userInfo))
+        $this->userinfo = Yii::app()->session['AdminUserInfo'];
+        if (empty($this->userinfo))
             header('Location:\admin\login');
-
     }
 }
