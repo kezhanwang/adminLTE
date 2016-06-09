@@ -34,7 +34,7 @@ class WebsiteController extends HwAdminController
             }
 
             $data = array(
-                'key' => $key,
+                'define_key' => $key,
                 'value' => $value,
                 'desp' => $desp,
             );
@@ -47,8 +47,44 @@ class WebsiteController extends HwAdminController
         } else {
             $templateDate = array();
             $templateDate['data'] = ARWebsite::getWebSiteById($id);
-            $templateDate['back'] = $_SERVER['HTTP_REFERER'];
+            $templateDate['back'] = '/admin/website/index';
             $this->render('edit', $templateDate);
+        }
+    }
+
+    public function actionadd()
+    {
+        $key = Yii::app()->request->getParam('key', '');
+        $value = Yii::app()->request->getParam('value', '');
+        $desp = Yii::app()->request->getParam('desp', '');
+        $type = Yii::app()->request->getParam('type', '');
+        if ($type == '_add'){
+            if ($key == '' || $value == '' || $desp == '') {
+                HwOutput::errorOutput(0, '提交信息错误');
+            }
+            
+            $check = ARWebsite::getWebSiteByParams(array('define_key'=>$key));
+            if (!empty($check)){
+                HwOutput::errorOutput(0, '该配置已经存在');
+            }
+            
+            $insert = array(
+                'define_key' => $key,
+                'value' => $value,
+                'desp' => $desp,
+                'create_time' => date('Y-m-d H:i:s')
+            );
+            $result = ARWebsite::insertData($insert);
+            if ($result) {
+                HwOutput::successOutput(1, '创建成功');
+            } else {
+                HwOutput::errorOutput(0, '创建失败');
+            }
+        }else{
+            $templateData = array(
+                'back' => '/admin/website/index',
+            );
+            $this->render('add', $templateData);
         }
     }
 }

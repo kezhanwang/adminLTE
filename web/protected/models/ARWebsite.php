@@ -32,7 +32,7 @@ class ARWebsite extends CActiveRecord
     public static function getWebSiteList($page = 0, $pageSize = 10)
     {
         $limit = $page * $pageSize . ',' . $pageSize;
-        $sql = "SELECT * FROM " . self::TABLE_NAME . " limit {$limit}";
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " limit {$limit} ;";
         $result = Yii::app()->db_r->createCommand($sql)->queryAll();
         $total = self::getWebSite();
         $count = count($total);
@@ -46,6 +46,19 @@ class ARWebsite extends CActiveRecord
         return $data;
     }
 
+    public static function getWebSiteByParams($params)
+    {
+        extract($params);
+        $where = '';
+
+        if ($define_key)
+            $where .= "  `define_key` = '{$define_key}'";
+
+        $sql = "SELECT * FROM " . self::TABLE_NAME . " WHERE {$where} ;";
+        $result = Yii::app()->db_r->createCommand($sql)->queryAll();
+        return $result;
+    }
+
     public static function getWebSiteById($id)
     {
         $result = Yii::app()->db_r->createCommand()->select('*')->from(self::TABLE_NAME)->where('id=:id', array(':id' => $id))->queryRow();
@@ -55,6 +68,12 @@ class ARWebsite extends CActiveRecord
     public static function updateData($id, $data)
     {
         $result = Yii::app()->db->createCommand()->update(self::TABLE_NAME, $data, 'id=:id', array(':id' => $id));
+        return $result;
+    }
+
+    public static function insertData($insert)
+    {
+        $result = Yii::app()->db->createCommand()->insert(self::TABLE_NAME, $insert);
         return $result;
     }
 }

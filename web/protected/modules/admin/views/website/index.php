@@ -1,8 +1,12 @@
+<section class="content-header">
+    <a href="/admin/website/add" class="btn btn-default">添加网站配置</a>
+</section>
 <section class="content">
     <div class="row">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">网站配置</h3>
+
             </div><!-- /.box-header -->
             <div class="box-body">
                 <table id="example2" class="table table-bordered table-hover">
@@ -22,7 +26,7 @@
                     <?php foreach ($result as $item) { ?>
                         <tr>
                             <td><?php echo $item['id']; ?></td>
-                            <td><?php echo $item['key']; ?></td>
+                            <td><?php echo $item['define_key']; ?></td>
                             <td><?php echo $item['value']; ?></td>
                             <td><?php echo $item['desp']; ?></td>
                             <td><?php echo $item['create_time']; ?></td>
@@ -45,12 +49,15 @@
                     </tr>
                     </tfoot>
                 </table>
+
+            </div><!-- /.box-body -->
+            <div class="box-footer">
                 <div class="row">
                     <div class="col-sm-7">
                         <?php echo $page;?>
                     </div>
                 </div>
-            </div><!-- /.box-body -->
+            </div>
         </div><!-- /.box -->
     </div>
 </section>

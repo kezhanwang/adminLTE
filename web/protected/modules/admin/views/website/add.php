@@ -10,20 +10,16 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <label>ID</label>
-                        <input class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>" readonly>
-                    </div>
-                    <div class="form-group">
                         <label>KEY</label>
-                        <input class="form-control" id="key" name="key" value="<?php echo $data['define_key']; ?>" readonly>
+                        <input class="form-control" id="key" name="key" value="">
                     </div>
                     <div class="form-group">
                         <label>VALUE</label>
-                        <input class="form-control" id="value" name="value" value="<?php echo $data['value']; ?>">
+                        <input class="form-control" id="value" name="value" value="">
                     </div>
                     <div class="form-group">
                         <label>描述</label>
-                        <input class="form-control" id="desp" name="desp" value="<?php echo $data['desp']; ?>">
+                        <input class="form-control" id="desp" name="desp" value="">
                     </div>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
@@ -73,7 +69,6 @@
     $(function () {
         var sure = false;
         $('#ok').click(function () {
-            var id = $('#id').val();
             var key = $('#key').val();
             var value = $('#value').val();
             var desp = $('#desp').val();
@@ -88,15 +83,14 @@
         });
         
         $('#todo').click(function () {
-            var id = $('#id').val();
             var key = $('#key').val();
             var value = $('#value').val();
             var desp = $('#desp').val();
             $('#sure').modal('hide');
             $.ajax({
                 type: 'POST',
-                url:'/admin/website/edit',
-                data: {id: id, key: key, value: value, desp: desp, type: '_edit'},
+                url:'/admin/website/add',
+                data: { key: key, value: value, desp: desp, type: '_add'},
                 dataType: 'json',
                 success: function (responseData) {
                     if (responseData.code){
