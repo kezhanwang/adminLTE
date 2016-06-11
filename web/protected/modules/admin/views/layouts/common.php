@@ -43,8 +43,8 @@ $function = Yii::app()->controller->getAction()->getId();
                     <?php } else { ?>
                         <li class="treeview">
                     <?php } ?>
+                    <a href="<?php echo $value['url'];?>"><i class="fa fa-dashboard"></i> <span><?php echo $value['menu_name']; ?></span> <i class="fa fa-angle-left pull-right"></i></a>
                     <?php if (!empty($value['children'])) { ?>
-                        <a href="#"><i class="fa fa-dashboard"></i> <span><?php echo $value['menu_name']; ?></span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <?php foreach ($value['children'] as $k => $v) { ?>
                                 <?php if ($v['controller'] == $controller && $v['function'] == $function) { ?>
@@ -54,8 +54,6 @@ $function = Yii::app()->controller->getAction()->getId();
                                 <?php } ?>
                             <?php } ?>
                         </ul>
-                    <?php }else{ ?>
-                        <a href="<?php echo $value['url'];?>"><i class="fa fa-dashboard"></i> <span><?php echo $value['menu_name']; ?></span> <i class="fa fa-angle-left pull-right"></i></a>
                     <?php }?>
                     </li>
                 <?php } ?>
