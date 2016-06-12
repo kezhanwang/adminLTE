@@ -55,6 +55,12 @@ class ARArticleClass extends CActiveRecord
         return $result;
     }
 
+    static public function getArticleClassByStatus($status = 0)
+    {
+        $result = Yii::app()->db_r->createCommand()->select('*')->from(self::TABLE_NAME)->where('status=:status', array(':status' => $status))->queryAll();
+        return $result;
+    }
+
     static public function addArticleClass($data = array())
     {
         if (empty($data))
