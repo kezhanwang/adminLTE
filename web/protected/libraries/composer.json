@@ -1,5 +1,6 @@
 {
     "require": {
-        "knplabs/knp-menu": "^2.1"
+        "knplabs/knp-menu": "^2.1",
+        "league/csv": "^7.2"
     }
 }

@@ -58,16 +58,16 @@ class WebsiteController extends HwAdminController
         $value = Yii::app()->request->getParam('value', '');
         $desp = Yii::app()->request->getParam('desp', '');
         $type = Yii::app()->request->getParam('type', '');
-        if ($type == '_add'){
+        if ($type == '_add') {
             if ($key == '' || $value == '' || $desp == '') {
                 HwOutput::errorOutput(0, '提交信息错误');
             }
-            
-            $check = ARWebsite::getWebSiteByParams(array('define_key'=>$key));
-            if (!empty($check)){
+
+            $check = ARWebsite::getWebSiteByParams(array('define_key' => $key));
+            if (!empty($check)) {
                 HwOutput::errorOutput(0, '该配置已经存在');
             }
-            
+
             $insert = array(
                 'define_key' => $key,
                 'value' => $value,
@@ -80,11 +80,16 @@ class WebsiteController extends HwAdminController
             } else {
                 HwOutput::errorOutput(0, '创建失败');
             }
-        }else{
+        } else {
             $templateData = array(
                 'back' => '/admin/website/index',
             );
             $this->render('add', $templateData);
         }
+    }
+
+    public function actionglobalset()
+    {
+        $this->render('globalset');
     }
 }

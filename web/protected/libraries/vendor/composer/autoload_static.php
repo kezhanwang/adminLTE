@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a
 {
     public static $prefixLengthsPsr4 = array (
+        'L' => 
+        array (
+            'League\\Csv\\' => 11,
+        ),
         'K' => 
         array (
             'Knp\\Menu\\' => 9,
@@ -14,6 +18,10 @@ class ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a
     );
 
     public static $prefixDirsPsr4 = array (
+        'League\\Csv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/csv/src',
+        ),
         'Knp\\Menu\\' => 
         array (
             0 => __DIR__ . '/..' . '/knplabs/knp-menu/src/Knp/Menu',
