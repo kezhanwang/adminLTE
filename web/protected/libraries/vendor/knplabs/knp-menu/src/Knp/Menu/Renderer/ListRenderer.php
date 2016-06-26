@@ -25,10 +25,10 @@ class ListRenderer extends Renderer implements RendererInterface
             'depth' => null,
             'matchingDepth' => null,
             'currentAsLink' => true,
-            'currentClass' => 'current',
-            'ancestorClass' => 'current_ancestor',
-            'firstClass' => 'first',
-            'lastClass' => 'last',
+            'currentClass' => '',
+            'ancestorClass' => '',
+            'firstClass' => '',
+            'lastClass' => '',
             'compressed' => false,
             'allow_safe_labels' => false,
             'clear_matcher' => true,
@@ -199,7 +199,7 @@ class ListRenderer extends Renderer implements RendererInterface
 
     protected function renderLinkElement(ItemInterface $item, array $options)
     {
-        return sprintf('<a href="%s"%s>%s</a>', $this->escape($item->getUri()), $this->renderHtmlAttributes($item->getLinkAttributes()), $this->renderLabel($item, $options));
+        return sprintf('<a href="%s"%s><i class="fa fa-dashboard"></i><span>%s<span><i class="fa fa-angle-left pull-right"></i></a>', $this->escape($item->getUri()), $this->renderHtmlAttributes($item->getLinkAttributes()), $this->renderLabel($item, $options));
     }
 
     protected function renderSpanElement(ItemInterface $item, array $options)
