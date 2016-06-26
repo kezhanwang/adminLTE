@@ -23,7 +23,17 @@ class ARAdminMenu extends CActiveRecord
 
     public static function getMenu()
     {
-        $result = Yii::app()->db_r->createCommand()->select('*')->from(self::TABLE_NAME)->queryAll();
-        return $result;
+        $sql = "SELECT * FROM " . self::TABLE_NAME;
+        $result = DBUtil::queryAll($sql);
+        if ($result) {
+            $menu = array();
+            foreach ($result as $item) {
+                $menu[$item['id']] = $item;
+            }
+            return $menu;
+        } else {
+            return array();
+        }
+
     }
 }

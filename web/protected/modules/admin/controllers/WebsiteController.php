@@ -10,12 +10,7 @@ class WebsiteController extends HwAdminController
 {
     public function actionindex()
     {
-        $templateData = array();
-        $page = Yii::app()->request->getParam('page', 0);
-        $data = ARWebsite::getWebSiteList($page, 10);
-        $templateData['result'] = $data['result'];
-        $templateData['page'] = $data['page'];
-        $this->render('index', $templateData);
+        $this->render('index');
     }
 
     public function actionedit()
@@ -90,6 +85,18 @@ class WebsiteController extends HwAdminController
 
     public function actionglobalset()
     {
-        $this->render('globalset');
+        $templateData = array();
+        $page = Yii::app()->request->getParam('page', 0);
+        $data = ARWebsite::getWebSiteList($page, 10);
+        $templateData['result'] = $data['result'];
+        $templateData['page'] = $data['page'];
+        $this->render('globalset', $templateData);
+    }
+
+    public function actionadminmenu()
+    {
+        $templateData = array();
+        $menu = ARAdminMenu::getMenu();
+        $this->render('adminmenu', $templateData);
     }
 }

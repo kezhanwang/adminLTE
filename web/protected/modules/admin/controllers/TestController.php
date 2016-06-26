@@ -6,6 +6,9 @@
  * Date: 16/6/9
  * Time: 下午7:00
  */
+require 'vendor/autoload.php';
+use Knp\Menu\MenuFactory;
+use Knp\Menu\Renderer\ListRenderer;
 class TestController extends HwAdminController
 {
     public function actionAddAdminUser()
@@ -29,5 +32,37 @@ class TestController extends HwAdminController
         var_dump($a);
         $b = Yii::app()->controller->getAction()->getId();
         var_dump($b);
+    }
+
+    public function actionKnp()
+    {
+        $menuList = ARAdminMenu::getMenu();
+        $menus = array();
+        foreach ($menuList as $key=>$value) {
+            $menus[$value['id']] = $value;
+        }
+
+        $factory = new MenuFactory();
+        $menu = $factory->createItem('My menu');
+
+        $menu->setChildrenAttribute('class', 'sidebar-menu');
+        foreach ($menus as $key=>$value) {
+            if ($value['parent_id'] == 0){
+                $menu->addChild($value['menu_name'],array('uri' => "/admin/{$value['controller']}/{$value['function']}"));
+                $menu[$value['menu_name']]->setAttribute('class', 'treeview');
+                $menu[$value['menu_name']]->setChildrenAttribute('class', 'treeview-menu');
+                if ($controller = Yii::app()->controller->id == $value['controller'])
+                    $menu[$value['menu_name']]->setAttribute('class', 'active');
+            }else{
+                $menu[$menus[$value['parent_id']]['menu_name']]->addChild($value['menu_name'],array('uri' => "/admin/{$value['controller']}/{$value['function']}"));
+            }
+
+        }
+        echo "<pre>";
+        var_dump($menu);
+        echo "</pre>";
+
+//        $renderer = new ListRenderer(new \Knp\Menu\Matcher\Matcher());
+//        var_dump($renderer->render($menu));
     }
 }

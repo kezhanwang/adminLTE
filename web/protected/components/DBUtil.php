@@ -11,7 +11,7 @@ class DBUtil {
     /**
      * 查询单条,返回数组
      */
-    public static function getRow($sql, $queryR = true) {
+    public static function queryRow($sql, $queryR = true) {
         self::reconnect();
         if ($queryR) {
             $command = Yii::app()->db_r->createCommand($sql);
@@ -24,7 +24,7 @@ class DBUtil {
     /**
      * 查询,返回数组
      */
-    public static function query($sql, $queryR = true) {
+    public static function queryAll($sql, $queryR = true) {
         self::reconnect();
         if ($queryR) {
             $command = Yii::app()->db_r->createCommand($sql);

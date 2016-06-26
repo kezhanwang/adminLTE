@@ -31,11 +31,7 @@ class HwAdminController extends CController
 
     public function getMenu()
     {
-        $menuList = ARAdminMenu::getMenu();
-        $menus = array();
-        foreach ($menuList as $key => $value) {
-            $menus[$value['id']] = $value;
-        }
+        $menus = ARAdminMenu::getMenu();
         $controller = Yii::app()->controller->id;
         $function = Yii::app()->controller->getAction()->getId();
         $factory = new MenuFactory();
