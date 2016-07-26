@@ -25,7 +25,7 @@ class WebsiteController extends HwAdminController
         $type = Yii::app()->request->getParam('type', '');
         if ($type == '_edit') {
             if ($key == '' || $value == '' || $desp == '') {
-                HwOutput::errorOutput(0, '提交信息错误');
+                HwOutput::messageOutPut(0, '提交信息错误');
             }
 
             $data = array(
@@ -35,9 +35,9 @@ class WebsiteController extends HwAdminController
             );
             $result = ARWebsite::updateData($id, $data);
             if ($result) {
-                HwOutput::successOutput(1, '修改成功');
+                HwOutput::messageOutPut(1, '修改成功');
             } else {
-                HwOutput::errorOutput(0, '修改失败');
+                HwOutput::messageOutPut(0, '修改失败');
             }
         } else {
             $templateDate = array();
@@ -55,12 +55,12 @@ class WebsiteController extends HwAdminController
         $type = Yii::app()->request->getParam('type', '');
         if ($type == '_add') {
             if ($key == '' || $value == '' || $desp == '') {
-                HwOutput::errorOutput(0, '提交信息错误');
+                HwOutput::messageOutPut(0, '提交信息错误');
             }
 
             $check = ARWebsite::getWebSiteByParams(array('define_key' => $key));
             if (!empty($check)) {
-                HwOutput::errorOutput(0, '该配置已经存在');
+                HwOutput::messageOutPut(0, '该配置已经存在');
             }
 
             $insert = array(
@@ -71,9 +71,9 @@ class WebsiteController extends HwAdminController
             );
             $result = ARWebsite::insertData($insert);
             if ($result) {
-                HwOutput::successOutput(1, '创建成功');
+                HwOutput::messageOutPut(1, '创建成功');
             } else {
-                HwOutput::errorOutput(0, '创建失败');
+                HwOutput::messageOutPut(0, '创建失败');
             }
         } else {
             $templateData = array(

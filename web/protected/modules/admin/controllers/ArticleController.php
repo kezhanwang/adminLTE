@@ -52,7 +52,7 @@ class ArticleController extends HwAdminController
             if ($result) {
                 header('Location:/admin/article/list');
             } else {
-                HwOutput::errorOutput(0, '添加错误');
+                HwOutput::messageOutPut(0, '添加错误');
             }
         } else {
             $templateData = array();
@@ -93,7 +93,7 @@ class ArticleController extends HwAdminController
             if ($result){
                 header('Location:/admin/article/list');
             }else{
-                HwOutput::errorOutput(0, '添加错误');
+                HwOutput::messageOutPut(0, '添加错误');
             }
         } else {
             $templateData = array();
@@ -126,7 +126,7 @@ class ArticleController extends HwAdminController
 
         if ($type == '_classadd') {
             if (strlen($class) > 50) {
-                HwOutput::errorOutput(0, '分类设置长度过长');
+                HwOutput::messageOutPut(0, '分类设置长度过长');
             }
 
             $check = ARArticleClass::getArticleClassByClass($class);
@@ -139,12 +139,12 @@ class ArticleController extends HwAdminController
                 );
                 $result = ARArticleClass::addArticleClass($data);
                 if ($result) {
-                    HwOutput::successOutput(1, '添加成功');
+                    HwOutput::messageOutPut(1, '添加成功');
                 } else {
-                    HwOutput::errorOutput(0, '该分类添加失败');
+                    HwOutput::messageOutPut(0, '该分类添加失败');
                 }
             } else {
-                HwOutput::errorOutput(0, '该分类已经存在');
+                HwOutput::messageOutPut(0, '该分类已经存在');
             }
 
         } else {
@@ -160,7 +160,7 @@ class ArticleController extends HwAdminController
         $status = Yii::app()->request->getParam('status', 0);
         $type = Yii::app()->request->getParam('type');
         if ($id == 0 || !is_numeric($id)) {
-            HwOutput::errorOutput(0, '信息错误');
+            HwOutput::messageOutPut(0, '信息错误');
         }
         if ($type == '_classedit') {
             $updateData = array(
@@ -169,9 +169,9 @@ class ArticleController extends HwAdminController
             );
             $result = ARArticleClass::updateArticleClass($id, $updateData);
             if ($result) {
-                HwOutput::successOutput(1, '该分类更新成功');
+                HwOutput::messageOutPut(1, '该分类更新成功');
             } else {
-                HwOutput::errorOutput(0, '该分类更新失败');
+                HwOutput::messageOutPut(0, '该分类更新失败');
             }
         } else {
             $templateData = array('back' => '/admin/article/class', 'type' => '_classedit');

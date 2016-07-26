@@ -42,15 +42,15 @@ class LoginController extends CController
                 $user->checkUsername();
                 $user->checkPassword();
             } catch (Exception $e) {
-                HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
+                HwOutput::messageOutPut(LoginError, $this->errorLoginMsg, array());
             }
 
             try {
                 $userInfo = $user->getUserInfo();
                 Yii::app()->session['AdminUserInfo'] = $userInfo;
-                HwOutput::successOutput(LoginSuccess, $this->successLoginMsg, array('url' => '/admin/index'));
+                HwOutput::messageOutPut(LoginSuccess, $this->successLoginMsg, array('url' => '/admin/index'));
             } catch (Exception $e) {
-                HwOutput::errorOutput(LoginError, $this->errorLoginMsg, array());
+                HwOutput::messageOutPut(LoginError, $this->errorLoginMsg, array());
             }
         }
     }

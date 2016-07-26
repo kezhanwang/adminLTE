@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a
 {
     public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'Monolog\\' => 8,
+        ),
         'L' => 
         array (
             'League\\Csv\\' => 11,
@@ -18,6 +22,10 @@ class ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
         'League\\Csv\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/csv/src',
@@ -28,11 +36,22 @@ class ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Psr\\Log\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/psr/log',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit5b11b76675a67d204ec61d0a5e52008a::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

@@ -9,11 +9,11 @@
 class HwOutput
 {
 
-    public static function errorOutput($code, $msg, $data=array())
+    public static function messageOutPut($code, $msg, $isLogin=false,$data=array())
     {
         $returnData = array(
             'code' => $code,
-            'status' => FALSE,
+            'isLogin' => $isLogin,
             'time' => time(),
             'msg' => $msg,
             'data' => $data,
@@ -21,19 +21,7 @@ class HwOutput
         echo self::json_encode($returnData);
         exit();
     }
-
-    public static function successOutput($code, $msg, $data=array()){
-        $returnData = array(
-            'code' => $code,
-            'status' => TRUE,
-            'time' => time(),
-            'msg' => $msg,
-            'data' => $data,
-        );
-        echo self::json_encode($returnData);
-        exit();
-    }
-
+    
     private static function json_encode($data = array())
     {
         return json_encode($data);
